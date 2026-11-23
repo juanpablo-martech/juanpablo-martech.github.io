@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portafolio de Juan Pablo Osorio</title>
+<meta name="description" content="Juan Pablo Osorio construye con código e IA páginas de alta conversión, automatizaciones y contenido a escala para e-commerce.">
+<link rel="canonical" href="https://juanpablo-martech.github.io/">
+<meta property="og:url" content="https://juanpablo-martech.github.io/">
+<meta property="og:title" content="Juan Pablo Osorio · E-commerce, web y automatización con IA">
+<meta property="og:description" content="Páginas de alta conversión, automatizaciones y contenido a escala, hechos con código e IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Dirección C · Sistema en vivo: lienzo gris claro, tinta casi negra, una señal naranja solo para lo que está vivo. La portada abre con una herramienta real. */
+:root{
+  --canvas:#ECEDEF;
+  --panel:#FFFFFF;
+  --soft:#F6F7F8;
+  --ink:#0E1014;
+  --muted:#4A505C;
+  --line:#D3D7DE;
+  --signal:#FF5B1F;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--muted)}
+h1,h2,h3{text-wrap:balance;margin:0}
+.nw{white-space:nowrap}
+p{margin:0 0 14px}
+
+/* Navegación */
+.nav{position:sticky;top:0;z-index:20;background:rgba(236,237,239,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px}
+.brand{display:inline-flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
+.navname{font-size:14.5px;font-weight:600;letter-spacing:-.01em;padding-left:14px;border-left:1px solid var(--line)}
+.mark{display:inline-flex;align-items:flex-end;gap:3px;text-decoration:none;font-weight:800;font-size:22px;letter-spacing:-.05em;line-height:1}
+.mark i{display:inline-block;width:6px;height:19px;background:var(--signal)}
+.links{display:flex;gap:26px;align-items:center}
+.links a{text-decoration:none;font-size:14.5px;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:7px;font-size:14.5px;font-weight:600;text-decoration:none;border:1px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;font-family:var(--sans)}
+.btn.solid{background:var(--ink);color:#fff}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.solid:hover{background:#2A2E37}
+.links .btn{color:#fff}
+
+/* Portada */
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:52px;align-items:center;padding:72px 0 56px}
+.live{display:inline-flex;align-items:center;gap:8px}
+.live b{width:8px;height:8px;border-radius:50%;background:var(--signal);display:inline-block}
+.hero h1{font-size:clamp(2.4rem,4.6vw,3.85rem);font-weight:700;letter-spacing:-.04em;line-height:1.02;margin:18px 0 20px}
+.cur{display:inline-block;width:.42em;height:.82em;background:var(--signal);margin-left:.08em;vertical-align:-.06em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cur{animation:none}html{scroll-behavior:auto}}
+.hero .lead{font-size:18.5px;color:var(--muted);max-width:46ch;margin-bottom:26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.who{display:flex;align-items:center;gap:12px}
+.who img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.who span{font-size:14px;color:var(--muted);line-height:1.35}
+.who strong{color:var(--ink);font-weight:600}
+.shot{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 34px 60px -34px rgba(14,16,20,.38)}
+.shot .bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
+.cap{margin-top:12px;font-size:14px;color:var(--muted)}
+.cap b{color:var(--ink);font-weight:600}
+
+/* Cifras */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.nums div{padding:22px 20px 22px 0;display:flex;flex-direction:column;gap:4px}
+.nums div+div{padding-left:20px;border-left:1px solid var(--line)}
+.nums strong{font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+
+section{padding:84px 0 0}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.035em;line-height:1.05}
+
+/* Capacidades */
+.capa{display:grid;grid-template-columns:72px minmax(0,1.15fr) minmax(0,1fr);gap:28px;padding:30px 0;border-top:1px solid var(--line)}
+.capa:last-child{border-bottom:1px solid var(--line)}
+.capa .n{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:6px}
+.capa h3{font-size:25px;font-weight:650;letter-spacing:-.03em;margin-bottom:8px}
+.capa p{color:var(--muted);margin:0}
+.gain{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px;align-self:start}
+.gain .mono{display:block;margin-bottom:6px}
+.gain p{color:var(--ink);font-weight:500;margin:0}
+
+/* Casos */
+.caso{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:52px;padding:56px 0;border-top:1px solid var(--line);align-items:start}
+.caso.rev .txt{order:2}
+.caso.rev .vis{order:1}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.tag i{width:9px;height:9px;background:var(--signal);display:inline-block}
+.caso h3{font-size:clamp(1.6rem,2.6vw,2.1rem);font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:16px}
+.caso .ctx{color:var(--muted)}
+.ficha{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:18px 0 22px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ficha dt{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.ficha dd{margin:0;font-size:14.5px}
+.dec{margin:0 0 20px;padding-left:20px}
+.dec li{margin:7px 0}
+.res{border-left:3px solid var(--signal);padding:4px 0 4px 16px;font-weight:500;margin-bottom:16px}
+.ia{font-family:var(--mono);font-size:12.5px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.ia b{color:var(--ink);font-weight:500}
+
+/* Diagramas */
+.board{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px}
+.board+.board{margin-top:16px}
+.board .mono{display:block;margin-bottom:14px}
+.route{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}
+.step{flex:1 1 120px;border:1px solid var(--line);border-radius:7px;padding:12px;background:var(--soft)}
+.step b{display:block;font-size:15px;font-weight:600}
+.step span{font-size:13px;color:var(--muted);line-height:1.4;display:block;margin-top:2px}
+.step.hot{background:var(--ink);border-color:var(--ink)}
+.step.hot b,.step.hot span{color:#fff}
+.arrow{align-self:center;font-family:var(--mono);color:var(--muted)}
+.tokens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.tok i{display:block;height:54px;border-radius:6px;border:1px solid var(--line)}
+.tok small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:6px}
+.roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.role{border:1px solid var(--line);border-radius:7px;padding:12px 14px;background:var(--soft)}
+.role .k{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.role b{display:block;font-size:15.5px;font-weight:600;margin:2px 0}
+.role span{font-size:13px;color:var(--muted);line-height:1.4;display:block}
+.gate{margin-top:10px;display:flex;align-items:center;gap:10px;border:1px dashed var(--ink);border-radius:7px;padding:10px 14px;font-size:14px}
+.gate i{width:9px;height:9px;border-radius:50%;background:var(--signal);flex:none}
+.schema{display:flex;flex-wrap:wrap;gap:8px}
+.schema span{font-family:var(--mono);font-size:12.5px;border:1px solid var(--line);border-radius:5px;padding:6px 10px;background:var(--soft)}
+
+/* La tienda por dentro (caso 01) · oculto por ahora */
+[hidden]{display:none!important}
+.inside{margin:0 0 56px;background:var(--ink);color:#fff;border-radius:14px;padding:40px 36px 32px}
+.inside .tag{color:#9AA0AB}
+.inside h3{font-size:clamp(1.6rem,2.6vw,2.1rem);font-weight:700;letter-spacing:-.035em;line-height:1.1;margin-bottom:12px;color:#fff}
+.inside .intro{color:#C9CDD5;max-width:62ch;margin-bottom:26px}
+.inside-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.win{background:#16191F;border:1px solid #2C313B;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.win .wbar{display:flex;align-items:center;gap:7px;padding:10px 12px;border-bottom:1px solid #2C313B}
+.win .wbar i{width:9px;height:9px;border-radius:50%;background:#3A404B;flex:none}
+.win .wbar span{margin-left:8px;font-family:var(--mono);font-size:12px;color:#9AA0AB;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stage{position:relative;aspect-ratio:16/11;overflow:hidden;background:linear-gradient(140deg,#0C0A1A 0%,#162256 28%,#2FA4FF 47%,#7B5CFF 64%,#D94BFF 82%,#ECD4FF 100%);touch-action:pan-y}
+.win .stage{flex:1 1 auto;min-height:260px}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage.nogl canvas{display:none}
+.veil{position:absolute;inset:0;background:#FAF9F6;opacity:0;pointer-events:none}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+.cards{position:absolute;left:7%;right:7%;bottom:10%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;opacity:0;pointer-events:none}
+.cards b{display:block;aspect-ratio:3/4;border-radius:6px;background:rgba(255,255,255,.66);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);box-shadow:0 12px 24px -14px rgba(26,26,26,.35)}
+.state{position:absolute;left:12px;top:12px;font-family:var(--mono);font-size:11.5px;color:#fff;background:rgba(14,16,20,.6);padding:4px 8px;border-radius:4px}
+.ctrl{display:flex;align-items:center;gap:12px 14px;padding:14px 16px;border-top:1px solid #2C313B;flex-wrap:wrap;margin-top:auto}
+.ctrl label{font-family:var(--mono);font-size:12.5px;color:#C9CDD5}
+.ctrl input[type=range]{flex:1 1 150px;accent-color:var(--signal);cursor:pointer}
+.ctrl output{font-family:var(--mono);font-size:12.5px;color:#fff;min-width:15ch;text-align:right}
+.code pre{margin:0;padding:16px 18px;overflow:auto;font-family:var(--mono);font-size:12px;line-height:1.7;color:#E6E8EC;tab-size:2}
+.code .c{color:#7D8492}
+.code .k{color:#FF8A5B}
+.code .sw{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:0}
+.code ul{margin:0;padding:14px 18px 16px 34px;border-top:1px solid #2C313B;font-size:14.5px;color:#C9CDD5;line-height:1.5}
+.code li{margin:6px 0}
+.funnel{margin-top:22px;padding-top:18px;border-top:1px solid #2C313B}
+.funnel .lab{display:block;font-family:var(--mono);font-size:12.5px;color:#9AA0AB;margin-bottom:12px}
+.funnel ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.funnel li{border:1px solid #2C313B;border-radius:7px;padding:10px;font-size:13.5px;line-height:1.3;font-weight:500}
+.funnel li span{display:block;font-family:var(--mono);font-size:11px;color:#9AA0AB;margin-bottom:5px;font-weight:400}
+.funnel li.hot{border-color:var(--signal)}
+.funnel li.hot span{color:var(--signal)}
+.inside .foot{margin:18px 0 0;font-family:var(--mono);font-size:12.5px;color:#9AA0AB}
+
+/* Pines publicados (caso 03) */
+.caso .span{grid-column:1/-1}
+.pins{margin:0}
+.pingrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.pingrid figure{margin:0}
+.pingrid img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;border-radius:7px;border:1px solid var(--line)}
+.pingrid figcaption{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:7px}
+.pins .note{margin:14px 0 0}
+.pins .note a{color:var(--ink)}
+
+/* Método */
+.metodo{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--ink)}
+.metodo div{padding:20px 18px 20px 0}
+.metodo div+div{padding-left:18px;border-left:1px solid var(--line)}
+.metodo .mono{display:block;margin-bottom:10px}
+.metodo b{display:block;font-size:17px;font-weight:650;letter-spacing:-.02em;margin-bottom:4px}
+.metodo span{font-size:14.5px;color:var(--muted)}
+.rule{margin-top:28px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--ink);color:#fff;border-radius:10px;padding:22px 24px}
+.rule i{width:14px;height:40px;background:var(--signal);display:block}
+.rule p{margin:0;font-size:18px;line-height:1.5}
+
+/* Sobre mí */
+.about{display:grid;grid-template-columns:240px minmax(0,1fr);gap:44px;align-items:start}
+.about img{width:240px;height:240px;border-radius:10px;object-fit:cover;filter:grayscale(.15)}
+.about p{max-width:62ch;font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{font-family:var(--mono);font-size:12.5px;border:1px solid var(--line);background:var(--panel);border-radius:5px;padding:6px 10px}
+
+/* Contacto */
+.contact{margin-top:84px;background:var(--ink);color:#fff;border-radius:14px;padding:52px 44px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+.contact h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:700;letter-spacing:-.04em;line-height:1.05}
+.contact p{color:#C9CDD5;margin:16px 0 0;max-width:44ch}
+.line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #2C313B;flex-wrap:wrap}
+.line .v{font-family:var(--mono);font-size:14.5px;color:#fff;word-break:break-all}
+.line a{color:#fff}
+.copy{font-family:var(--mono);font-size:12px;background:transparent;color:#fff;border:1px solid #5A606C;border-radius:5px;padding:6px 10px;cursor:pointer}
+.copy:hover{border-color:var(--signal)}
+footer{padding:28px 0 44px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:920px){
+  .hero,.caso,.about,.contact{grid-template-columns:1fr}
+  .caso.rev .txt,.caso.rev .vis{order:initial}
+  .capa{grid-template-columns:1fr;gap:12px}
+  .metodo{grid-template-columns:1fr 1fr}
+  .metodo div,.metodo div+div{padding:18px 16px 18px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .links a:not(.btn){display:none}
+  .navname{display:none}
+  .about img{width:180px;height:180px}
+  .inside-grid{grid-template-columns:1fr}
+  .funnel ol{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .pingrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .nums{grid-template-columns:1fr 1fr}
+  .nums div,.nums div+div{padding:18px 12px 18px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .tokens,.roles{grid-template-columns:1fr 1fr}
+  .metodo{grid-template-columns:1fr}
+  .contact{padding:36px 22px}
+  .arrow{display:none}
+  .inside{padding:28px 18px 24px;border-radius:12px}
+  .funnel ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pingrid{gap:8px}
+  .ctrl output{min-width:0;text-align:left}
+  .code pre{font-size:11px;padding:14px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Juan Pablo Osorio, inicio"><span class="mark">jpo<i aria-hidden="true"></i></span><span class="navname">Juan Pablo Osorio</span></a>
+    <div class="links">
+      <a href="#capacidades">Capacidades</a>
+      <a href="#casos">Casos</a>
+      <a href="#metodo">Cómo trabajo</a>
+      <a href="Hoja-de-vida-Juan-Pablo-Osorio.pdf" download data-cv>Hoja de vida</a>
+      <a class="btn solid" href="#contacto">Escríbeme</a>
+    </div>
+  </div>
+</nav>
+
+<main id="inicio">
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <span class="mono live"><b aria-hidden="true"></b>Disponibilidad inmediata · Manizales, Medellín, Bogotá o remoto</span>
+        <h1>Construyo el sistema digital de una marca y lo pongo a vender<span class="cur" aria-hidden="true"></span></h1>
+        <p class="lead">Páginas de alta conversión, automatizaciones y contenido a escala, hechos con código e IA. Todo lo que ves aquí lo construí y lo opero en mi propia marca.</p>
+        <div class="cta">
+          <a class="btn solid" href="#casos">Ver los casos</a>
+          <a class="btn" href="Hoja-de-vida-Juan-Pablo-Osorio.pdf" download data-cv>Descargar hoja de vida</a>
+        </div>
+        <div class="who">
+          <img src="juan-pablo.jpg" alt="Juan Pablo Osorio" width="48" height="48">
+          <span><strong>Juan Pablo Osorio</strong><br>Especialista en <span class="nw">e-commerce</span>, desarrollo web y automatización con IA</span>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <div class="shot">
+          <div class="bar"><span class="mono">Plantilla de Pinterest</span><span class="mono">herramienta interna</span></div>
+          <img src="plantilla-pinterest.jpg" alt="Captura de la Plantilla de Pinterest: índice de tipologías con su estado a la izquierda, buscador y la portada de la plantilla" width="1200" height="491">
+        </div>
+        <figcaption class="cap"><b>Herramienta real.</b> La plantilla con la que produzco el contenido de Pinterest: índice por tipología, buscador, prompts firmados por tandas y un banco de ideas que avisa cuándo se agota.</figcaption>
+      </figure>
+    </header>
+
+    <div class="nums" role="list" aria-label="Cifras">
+      <div role="listitem"><strong>9 mil</strong><span class="mono">visualizaciones al mes en Pinterest, desde unas 3.800 en septiembre</span></div>
+      <div role="listitem"><strong>459</strong><span class="mono">publicaciones programadas con su razón</span></div>
+      <div role="listitem"><strong>5+</strong><span class="mono">herramientas web internas en uso</span></div>
+      <div role="listitem"><strong>4</strong><span class="mono">canales con producción mecanizada</span></div>
+    </div>
+  </div>
+
+  <section id="capacidades">
+    <div class="wrap">
+      <div class="head">
+        <h2>Lo que gana tu empresa</h2>
+        <span class="mono">Tres capacidades, una sola persona</span>
+      </div>
+
+      <div class="capa">
+        <span class="n">01</span>
+        <div>
+          <h3>Web de alta conversión, hecha con código</h3>
+          <p>Páginas y tiendas construidas desde el código: arquitectura pensada para que el visitante encuentre lo que busca o lo pida, diseño para celular primero y herramientas internas a la medida del equipo.</p>
+        </div>
+        <div class="gain"><span class="mono">Lo que gana tu empresa</span><p>Páginas y herramientas propias sin esperar a una agencia ni pagar un desarrollador aparte.</p></div>
+      </div>
+
+      <div class="capa">
+        <span class="n">02</span>
+        <div>
+          <h3>Automatización y agentes de IA</h3>
+          <p>Procesos repetitivos convertidos en sistemas: generadores de textos con revisión propia, rutinas que corren solas y agentes de IA con roles, reglas y aprobación humana donde importa.</p>
+        </div>
+        <div class="gain"><span class="mono">Lo que gana tu empresa</span><p>Tu equipo deja de hacer a mano lo que un sistema puede hacer bien y a tiempo.</p></div>
+      </div>
+
+      <div class="capa">
+        <span class="n">03</span>
+        <div>
+          <h3>Contenido a escala sin perder la marca</h3>
+          <p>Motores de prompts y calendarios que producen piezas consistentes para Instagram, Facebook, Pinterest y Marketplace, cada una con su razón de negocio y una tarjeta de calidad antes de salir.</p>
+        </div>
+        <div class="gain"><span class="mono">Lo que gana tu empresa</span><p>Tu marca publica todos los días sin depender de un diseñador para cada pieza.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos">
+    <div class="wrap">
+      <div class="head">
+        <h2>Casos</h2>
+        <span class="mono">Construidos y operados en mi propia marca</span>
+      </div>
+
+      <article class="caso">
+        <div class="txt">
+          <span class="tag"><i aria-hidden="true"></i>Caso 01 · Web</span>
+          <h3>Una tienda que no deja ir al que no encuentra su producto</h3>
+          <p class="ctx">Unos 320 productos en cinco mundos que no se parecen entre sí: anime, pop, decoración, religioso y personalizados. Cada mundo necesitaba su propia cara sin multiplicar el trabajo por cinco.</p>
+          <dl class="ficha">
+            <dt>Rol</dt><dd>Dirección, diseño y construcción</dd>
+            <dt>Hecho con</dt><dd>Código (HTML, CSS, JavaScript, WebGL) e IA sobre Shopify</dd>
+          </dl>
+          <ul class="dec">
+            <li>Una sola plantilla de mundo por variables, construida una vez y vestida para los cinco.</li>
+            <li>Una ruta de escape en tres niveles que lleva al visitante que no encuentra su producto hasta el pedido personalizado.</li>
+            <li>Fondo generativo en WebGL con un velo que se aclara al bajar, para que la marca se sienta sin tapar el catálogo.</li>
+            <li>Descripciones de colección escritas para leerse en el celular.</li>
+            <li>Las herramientas de los casos 03 y 04 también son aplicaciones web que construí, con buscador, base de datos y botones que ejecutan tareas.</li>
+          </ul>
+          <p class="res">La tienda trabaja como un catálogo que lleva a WhatsApp, que es donde cierra el comprador colombiano.</p>
+          <p class="ia"><b>La IA y yo:</b> la IA escribió buena parte del código; la arquitectura, el sistema de diseño y cada decisión de recorrido son míos.</p>
+        </div>
+        <div class="vis">
+          <div class="board">
+            <span class="mono">La ruta de escape · nadie se va sin opción</span>
+            <div class="route">
+              <div class="step"><b>Mundo</b><span>Anime, pop, decoración, religioso</span></div>
+              <span class="arrow" aria-hidden="true">→</span>
+              <div class="step"><b>Submundo</b><span>La serie, el estilo o el tema</span></div>
+              <span class="arrow" aria-hidden="true">→</span>
+              <div class="step"><b>Producto</b><span>La obra en sus medidas y marcos</span></div>
+              <span class="arrow" aria-hidden="true">→</span>
+              <div class="step hot"><b>Personalízalo</b><span>Si no está, se pide a la medida</span></div>
+            </div>
+          </div>
+          <div class="board">
+            <span class="mono">Sistema de diseño de la tienda</span>
+            <div class="tokens">
+              <div class="tok"><i style="background:#FAF9F6"></i><small>Lienzo #FAF9F6</small></div>
+              <div class="tok"><i style="background:#1A1A1A"></i><small>Tinta #1A1A1A</small></div>
+              <div class="tok"><i style="background:#7B5CFF"></i><small>Violeta #7B5CFF</small></div>
+              <div class="tok"><i style="background:linear-gradient(90deg,#2FA4FF,#7B5CFF,#D94BFF)"></i><small>Degradado de marca</small></div>
+            </div>
+            <p class="mono" style="margin:14px 0 0">Fraunces para títulos · Spectral itálica para acentos · JetBrains Mono para fichas.</p>
+          </div>
+          <div class="board">
+            <span class="mono">Prueba que puedes revisar hoy</span>
+            <p style="margin:0">Este sitio también lo escribí en código: sin plantillas ni constructores de páginas, pensado primero para el celular y con imágenes livianas para que cargue rápido.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- La tienda por dentro. OCULTO hasta que se desbloquee la cuenta de Shopify (pedido el 22 nov 2026). Para mostrarlo: quitar el atributo hidden. Al activarlo, sumar las capturas de la portada, un mundo y una ficha en una fila .pingrid de 3 columnas antes de .foot, y quitar la frase de la entrevista. -->
+      <div class="inside" id="tienda" aria-labelledby="tienda-titulo" hidden>
+        <span class="tag"><i aria-hidden="true"></i>Caso 01 · por dentro</span>
+        <h3 id="tienda-titulo">El código detrás de la tienda</h3>
+        <p class="intro">La portada abre sobre un fondo generativo en WebGL que se aclara a medida que el visitante baja al catálogo. Este es ese fondo, con el mismo shader de la tienda, corriendo aquí. Mueve el velo para ver la transición.</p>
+        <div class="inside-grid">
+          <div class="win">
+            <div class="wbar"><i></i><i></i><i></i><span>cuadrosdecorativos.co · fondo de la portada</span></div>
+            <div class="stage">
+              <canvas aria-label="Fondo generativo de la tienda: una malla de color que se mueve entre índigo, azul, morado, fucsia y lavanda" role="img"></canvas>
+              <div class="veil"></div>
+              <div class="cards" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+              <div class="grain" aria-hidden="true"></div>
+              <span class="state" aria-hidden="true">velo 0 %</span>
+            </div>
+            <div class="ctrl">
+              <label for="velo">Velo</label>
+              <input id="velo" type="range" min="0" max="90" step="1" value="0">
+              <output id="velo-out" for="velo">0 % · portada</output>
+            </div>
+          </div>
+          <div class="win code">
+            <div class="wbar"><i></i><i></i><i></i><span>fondo.frag · GLSL</span></div>
+<pre><code><span class="c">// Seis paradas de color, bloqueadas a la marca</span>
+<span class="k">vec3</span> ramp(<span class="k">float</span> t){
+  <span class="k">vec3</span> c0 = vec3( 12., 10., 26.)/255.; <span class="c">// <i class="sw" style="background:#0C0A1A;border:1px solid #3A404B"></i>índigo</span>
+  <span class="k">vec3</span> c1 = vec3( 22., 34., 86.)/255.;
+  <span class="k">vec3</span> c2 = vec3( 47.,164.,255.)/255.; <span class="c">// <i class="sw" style="background:#2FA4FF"></i>azul</span>
+  <span class="k">vec3</span> c3 = vec3(123., 92.,255.)/255.; <span class="c">// <i class="sw" style="background:#7B5CFF"></i>morado</span>
+  <span class="k">vec3</span> c4 = vec3(217., 75.,255.)/255.; <span class="c">// <i class="sw" style="background:#D94BFF"></i>fucsia</span>
+  <span class="k">vec3</span> c5 = vec3(236.,212.,255.)/255.; <span class="c">// <i class="sw" style="background:#ECD4FF"></i>lavanda</span>
+  <span class="k">vec3</span> c = mix(c0, c1, smoothstep(0., .30, t));
+  c = mix(c, c2, smoothstep(.30, .47, t));
+  c = mix(c, c3, smoothstep(.47, .65, t));
+  c = mix(c, c4, smoothstep(.65, .83, t));
+  <span class="k">return</span> mix(c, c5, smoothstep(.83, 1., t));
+}
+
+<span class="c">// El ruido deforma al ruido: así respira la malla</span>
+<span class="k">vec2</span> q = vec2(fbm(p + vec2(t*.15, 0.)),
+              fbm(p + vec2(5.2, 1.3) - vec2(0., t*.12)));
+<span class="k">vec2</span> r = vec2(fbm(p + 4.*q + vec2(1.7, 9.2) + vec2(t*.1, 0.)),
+              fbm(p + 4.*q + vec2(8.3, 2.8) - vec2(0., t*.08)));
+<span class="k">float</span> f = fbm(p + 4.*r);</code></pre>
+            <ul>
+              <li>La paleta no puede derivar: el verde, el turquesa y el cian quedan fuera por construcción.</li>
+              <li>El fondo es fijo en toda la página y el velo sube de 0 a 90 % al salir de la portada, para que el catálogo se lea blanco iluminado y no blanco plano.</li>
+              <li>Si el teléfono pide reducir el movimiento, el velo queda fijo y no hay animación.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="funnel">
+          <span class="lab">El embudo de la portada · siete etapas y catorce principios de comportamiento del comprador</span>
+          <ol>
+            <li><span>01</span>Entrada</li>
+            <li><span>02</span>Tu mundo</li>
+            <li><span>03</span>Filtro</li>
+            <li><span>04</span>Ficha · deseo</li>
+            <li><span>05</span>Ficha · justificación</li>
+            <li class="hot"><span>06</span>Personalización</li>
+            <li><span>07</span>Cierre memorable</li>
+          </ol>
+        </div>
+        <p class="foot">La portada y los cinco mundos completos se recorren en vivo en la entrevista.</p>
+      </div>
+
+      <article class="caso rev">
+        <div class="txt">
+          <span class="tag"><i aria-hidden="true"></i>Caso 02 · Automatización</span>
+          <h3>FORMARCA: un equipo de agentes de IA con roles y reglas</h3>
+          <p class="ctx">Una marca pequeña tiene que auditar su tienda, decidir qué promocionar, buscar imágenes y producir piezas cada semana. Hecho a mano, eso se come el día.</p>
+          <dl class="ficha">
+            <dt>Rol</dt><dd>Arquitectura del sistema y de cada rol</dd>
+            <dt>Hecho con</dt><dd>Claude Skills, rutinas programadas, Google Apps Script, n8n y Supabase</dd>
+          </dl>
+          <ul class="dec">
+            <li>Cada rol tiene su trabajo, sus reglas y lo que le entrega al siguiente.</li>
+            <li>La auditoría de rendimiento corre sola cada lunes y el cierre de Pinterest, el día 1 de cada mes.</li>
+            <li>Ninguna promoción se publica sin la aprobación del dueño: esa puerta está escrita en el contrato entre roles.</li>
+            <li>Un script de Apps Script arma la estructura de carpetas del sistema en Drive.</li>
+            <li>Para la atención, monté en n8n y Supabase la base de un agente de ventas por WhatsApp, que se enciende cuando el volumen pase de 30 mensajes diarios.</li>
+          </ul>
+          <p class="res">El trabajo se reparte entre roles que se entregan cosas entre sí, y el dueño solo aprueba lo que importa.</p>
+          <p class="ia"><b>La IA y yo:</b> los agentes ejecutan; yo diseñé los roles, las reglas y las puertas de aprobación.</p>
+        </div>
+        <div class="vis">
+          <div class="board">
+            <span class="mono">Los roles y cómo se pasan el trabajo</span>
+            <div class="roles">
+              <div class="role"><span class="k">R</span><b>Auditor de integración</b><span>Mide el catálogo y el rendimiento de la web cada semana.</span></div>
+              <div class="role"><span class="k">O</span><b>Analista de oportunidad</b><span>Lee la demanda y propone qué empujar y con qué oferta.</span></div>
+              <div class="role"><span class="k">C</span><b>Curaduría</b><span>Busca y selecciona las imágenes de producto.</span></div>
+              <div class="role"><span class="k">M</span><b>Producción gráfica</b><span>Arma el paquete de prompts listo para generar.</span></div>
+            </div>
+            <div class="gate"><i aria-hidden="true"></i>Puerta humana: nada se publica sin la aprobación del dueño.</div>
+          </div>
+          <div class="board">
+            <span class="mono">Agente de ventas por WhatsApp · base de datos</span>
+            <div class="schema"><span>contactos</span><span>conversaciones</span><span>mensajes</span><span>pedidos</span><span>métricas del agente</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="caso">
+        <div class="txt">
+          <span class="tag"><i aria-hidden="true"></i>Caso 03 · Contenido a escala</span>
+          <h3>Un motor que lee el producto y diseña la escena</h3>
+          <p class="ctx">Las primeras imágenes generadas ponían productos distintos en el mismo cuarto, con el mismo mueble y el mismo adorno. Así no se puede publicar todos los días.</p>
+          <dl class="ficha">
+            <dt>Rol</dt><dd>Arquitectura de prompts y control de calidad</dd>
+            <dt>Hecho con</dt><dd>Gemini con Nano Banana y herramientas web propias</dd>
+          </dl>
+          <ul class="dec">
+            <li>Dejé de nombrar objetos en el prompt, porque lo que se nombra se vuelve la respuesta por defecto.</li>
+            <li>La base fija solo el lugar, la luz y el encuadre; el resto se deriva de diez valores leídos de cada obra.</li>
+            <li>Ninguna pieza sale sin pasar una tarjeta de 5 métricas.</li>
+            <li>Todo vive en plantillas con buscador y bancos de ideas que avisan cuándo se agotan: 11 prompts en cinco tipologías para Pinterest y 11 bases por nicho para Marketplace.</li>
+          </ul>
+          <p class="res">Tres obras, tres cuartos sin un solo mueble en común. El sistema programó 459 publicaciones para cuatro canales, y el perfil de Pinterest pasó de unas 3.800 a 9 mil visualizaciones al mes entre septiembre y noviembre.</p>
+          <p class="ia"><b>La IA y yo:</b> la IA genera la imagen; yo escribí las reglas, medí cada tanda y firmé cada prompt solo cuando funcionó.</p>
+        </div>
+        <div class="vis">
+          <div class="board">
+            <span class="mono">Cómo funciona el motor</span>
+            <div class="route">
+              <div class="step"><b>Entra</b><span>Una imagen del producto</span></div>
+              <div class="step"><b>Lee</b><span>Diez valores de la obra</span></div>
+              <div class="step"><b>Fija</b><span>Lugar, luz y encuadre</span></div>
+              <div class="step"><b>Deriva</b><span>Muebles, materiales y un eco del tema</span></div>
+              <div class="step hot"><b>Mide</b><span>Tarjeta de 5 métricas</span></div>
+            </div>
+          </div>
+          <figure class="board" style="margin:16px 0 0;padding:0;overflow:hidden">
+            <img src="programacion.jpg" alt="Captura de La Programación: panel del próximo día con tres pines por publicar, botón para escribir los textos y alertas de fechas" width="1072" height="346">
+            <figcaption class="mono" style="padding:12px 16px;margin:0">La Programación · calendario con base de datos que reparte 243 pines y escribe sus textos con un botón</figcaption>
+          </figure>
+        </div>
+        <figure class="board pins span">
+          <span class="mono">Publicado en Pinterest · seis obras, seis cuartos que no se repiten</span>
+          <div class="pingrid">
+            <figure><img src="pin-sala.jpg" alt="Pin: sala verde oscuro con sofá de terciopelo, cojines rojo y mostaza, y un cuadro de jaguar con marco dorado" width="402" height="599"><figcaption>La sala</figcaption></figure>
+            <figure><img src="pin-conjunto.jpg" alt="Pin: dos cuadros verticales de mármol blanco y dorado sobre un sofá curvo color crema" width="402" height="599"><figcaption>El conjunto</figcaption></figure>
+            <figure><img src="pin-corredor.jpg" alt="Pin: pasillo iluminado con un cuadro grande de un gorila en la pared lateral y una consola de madera" width="402" height="599"><figcaption>El corredor</figcaption></figure>
+            <figure><img src="pin-altar.jpg" alt="Pin: altar en casa con un cuadro del Divino Niño, lámpara de cuadro, dos velas y un rosario sobre la consola" width="402" height="599"><figcaption>El altar</figcaption></figure>
+            <figure><img src="pin-despacho.jpg" alt="Pin: oficina con pared de listones de madera, escritorio ejecutivo y un cuadro de un auto deportivo al atardecer" width="402" height="599"><figcaption>El despacho</figcaption></figure>
+            <figure><img src="pin-regalo.jpg" alt="Pin: manos sosteniendo un cuadro personalizado sobre la cama, junto a la caja de regalo con cinta rosada" width="402" height="599"><figcaption>El regalo</figcaption></figure>
+          </div>
+          <figcaption class="mono note">Escenas generadas por el motor y publicadas en el perfil de Pinterest de la marca.</figcaption>
+        </figure>
+      </article>
+
+      <article class="caso rev">
+        <div class="txt">
+          <span class="tag"><i aria-hidden="true"></i>Caso 04 · Redacción automatizada</span>
+          <h3>De una sola imagen a la publicación completa</h3>
+          <p class="ctx">Escribir a mano el título, la descripción, las etiquetas y los mensajes de cada publicación era el cuello de botella para publicar dos veces al día.</p>
+          <dl class="ficha">
+            <dt>Rol</dt><dd>Diseño del asistente y de sus reglas</dd>
+            <dt>Hecho con</dt><dd>Gems de Gemini con instrucciones propias</dd>
+          </dl>
+          <ul class="dec">
+            <li>El asistente recibe solo la imagen y devuelve título, descripción, precio, campos, etiquetas, los grupos de la ciudad, el mensaje del grupo y la primera respuesta al comprador.</li>
+            <li>Conoce los precios, la fórmula del título, las categorías y las palabras prohibidas.</li>
+            <li>Se revisa solo con 12 puntos antes de entregar.</li>
+          </ul>
+          <p class="res">La redacción de cada publicación pasó de trabajo manual a un paso de revisión.</p>
+          <p class="ia"><b>La IA y yo:</b> el asistente redacta; yo definí qué sabe, qué no puede decir y cómo se revisa.</p>
+        </div>
+        <div class="vis">
+          <figure class="board" style="margin:0;padding:0;overflow:hidden">
+            <img src="escriba.jpg" alt="Captura de El Escriba de Marketplace: portada con la descripción del asistente y lo que sabe" width="1110" height="475">
+            <figcaption class="mono" style="padding:12px 16px;margin:0">El Escriba de Marketplace · instrucciones de 16.100 caracteres</figcaption>
+          </figure>
+          <figure class="board" style="margin:16px 0 0;padding:0;overflow:hidden">
+            <img src="plantilla-marketplace.jpg" alt="Captura de la Plantilla de Marketplace: índice de bases y el mapa con su estado" width="1200" height="491">
+            <figcaption class="mono" style="padding:12px 16px;margin:0">Plantilla de Marketplace · un motor y 11 bases por nicho</figcaption>
+          </figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="metodo">
+    <div class="wrap">
+      <div class="head">
+        <h2>Cómo trabajo</h2>
+        <span class="mono">Nada pasa al siguiente paso hasta que funciona</span>
+      </div>
+      <div class="metodo">
+        <div><span class="mono">01</span><b>Medir</b><span>El canal, la competencia y lo que hoy sí vende, antes de construir.</span></div>
+        <div><span class="mono">02</span><b>Separar</b><span>Distribución, formato o conversión: cada problema con su solución.</span></div>
+        <div><span class="mono">03</span><b>Construir</b><span>El sistema, con código e IA, sobre lo que se midió.</span></div>
+        <div><span class="mono">04</span><b>Firmar por tandas</b><span>Pruebas reales con tarjeta de puntaje hasta que el resultado se sostiene.</span></div>
+        <div><span class="mono">05</span><b>Automatizar</b><span>Lo que se repite pasa a una rutina, una plantilla o un agente.</span></div>
+      </div>
+      <div class="rule"><i aria-hidden="true"></i><p>La IA produce y yo decido qué se queda. Cada sistema se prueba en tandas reales y nada sale hasta que funciona.</p></div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="wrap about">
+      <img src="juan-pablo.jpg" alt="Retrato de Juan Pablo Osorio" width="240" height="240">
+      <div>
+        <div class="head" style="margin-bottom:18px"><h2>Sobre mí</h2></div>
+        <p>Soy de Manizales. Empecé con el dropshipping en 2023, pasé un año en ventas presenciales y en 2025 fundé CuadrosDecorativos.co, donde aprendí con mi plata en juego y construí cada sistema que aparece en esta página.</p>
+        <p>Llevo cinco semestres de Derecho. Por eso cuido que la publicidad no prometa lo que prohíbe la ley de consumo y que los datos personales se traten con autorización.</p>
+        <p>Busco un empleo de tiempo completo en un equipo de <span class="nw">e-commerce</span> o marketing, donde esto sume desde la primera semana. La operación diaria de mi marca ya la lleva otra persona.</p>
+        <div class="chips">
+          <span>Shopify</span><span>HTML · CSS · JavaScript</span><span>WebGL</span><span>n8n</span><span>Supabase</span><span>Apps Script</span><span>Claude Skills</span><span>Gemini · Nano Banana</span><span>Meta Ads</span><span>Facebook Marketplace</span><span>Pinterest Business</span><span>Canva</span><span>CapCut</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section id="contacto" class="contact" aria-labelledby="contacto-titulo">
+      <div>
+        <h2 id="contacto-titulo">¿Buscas a alguien así para tu equipo?</h2>
+        <p>Busco un cargo de especialista o coordinador en <span class="nw">e-commerce</span>, marketing digital o automatización. Disponibilidad inmediata, presencial en Manizales, Medellín o Bogotá, o remoto. Respondo el mismo día.</p>
+      </div>
+      <div>
+        <div class="line"><span class="v">osoriojuanpa09@gmail.com</span><button class="copy" type="button" id="copiar-correo" data-copy="osoriojuanpa09@gmail.com">Copiar</button></div>
+        <div class="line"><span class="v">WhatsApp +57 323 372 3213</span><a class="copy" href="https://wa.me/573233723213" style="text-decoration:none">Abrir</a></div>
+        <div class="line"><span class="v">LinkedIn</span><a class="copy" href="https://www.linkedin.com/in/juan-pablo-osorio-a22b68362/" style="text-decoration:none">Ver perfil</a></div>
+        <div class="line"><span class="v">Hoja de vida · PDF de 2 páginas</span><a class="copy" href="Hoja-de-vida-Juan-Pablo-Osorio.pdf" download data-cv style="text-decoration:none">Descargar</a></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">Construí este sitio con código e IA.</span>
+    <span class="mono">Actualizado en noviembre de 2026</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy');
+    try{
+      navigator.clipboard.writeText(t).then(function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1600)},function(){b.textContent='Selecciona el texto'});
+    }catch(e){b.textContent='Selecciona el texto'}
+  });
+});
+
+/* Fondo de la tienda: el mismo shader de la portada de CuadrosDecorativos.co */
+(function(){
+  var stage=document.querySelector('.stage');
+  if(!stage||stage.closest('[hidden]')) return;
+  var cv=stage.querySelector('canvas'), veil=stage.querySelector('.veil'), cards=stage.querySelector('.cards'), badge=stage.querySelector('.state');
+  var range=document.getElementById('velo'), out=document.getElementById('velo-out');
+  function setVeil(v){
+    veil.style.opacity=(v/100).toFixed(2);
+    var k=Math.min(1,Math.max(0,(v-35)/55));
+    cards.style.opacity=k.toFixed(2);
+    cards.style.transform='translateY('+(12-12*k).toFixed(1)+'px)';
+    out.textContent=v+' % · '+(v<15?'portada':(v<80?'bajando':'catálogo'));
+    badge.textContent='velo '+v+' %';
+  }
+  range.addEventListener('input',function(){setVeil(+range.value)});
+  setVeil(+range.value);
+
+  var gl=null;
+  try{gl=cv.getContext('webgl',{antialias:false,alpha:false})||cv.getContext('experimental-webgl');}catch(e){}
+  if(!gl){stage.classList.add('nogl');return;}
+  var VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  var FS=[
+    'precision highp float;uniform vec2 uRes;uniform float uT;uniform vec2 uMouse;',
+    'float hash(vec2 p){p=fract(p*vec2(123.34,345.45));p+=dot(p,p+34.345);return fract(p.x*p.y);}',
+    'float noise(vec2 p){vec2 i=floor(p),f=fract(p);float a=hash(i),b=hash(i+vec2(1.,0.)),c=hash(i+vec2(0.,1.)),d=hash(i+vec2(1.,1.));vec2 u=f*f*(3.-2.*f);return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
+    'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p*=2.02;a*=.5;}return v;}',
+    'vec3 ramp(float t){vec3 c0=vec3(12.,10.,26.)/255.,c1=vec3(22.,34.,86.)/255.,c2=vec3(47.,164.,255.)/255.,c3=vec3(123.,92.,255.)/255.,c4=vec3(217.,75.,255.)/255.,c5=vec3(236.,212.,255.)/255.;vec3 c=mix(c0,c1,smoothstep(0.,.30,t));c=mix(c,c2,smoothstep(.30,.47,t));c=mix(c,c3,smoothstep(.47,.65,t));c=mix(c,c4,smoothstep(.65,.83,t));c=mix(c,c5,smoothstep(.83,1.,t));return c;}',
+    'void main(){vec2 uv=gl_FragCoord.xy/uRes.xy;float asp=uRes.x/uRes.y;vec2 p=vec2(uv.x*asp,uv.y)*3.2;p+=uMouse*.35;float t=uT*.06;',
+    'vec2 q=vec2(fbm(p+vec2(t*.15,0.)),fbm(p+vec2(5.2,1.3)-vec2(0.,t*.12)));vec2 r=vec2(fbm(p+4.*q+vec2(1.7,9.2)+vec2(t*.1,0.)),fbm(p+4.*q+vec2(8.3,2.8)-vec2(0.,t*.08)));',
+    'float f=fbm(p+4.*r);f=clamp((f-.15)/.7,0.,1.);f=pow(f,1.05);vec3 col=ramp(f);col*=.85+.15*clamp(.5*q.x+.5*q.y,0.,1.);vec2 vc=uv-.5;col*=1.-.16*clamp(dot(vc,vc)*2.-.2,0.,1.);gl_FragColor=vec4(col,1.);}'
+  ].join('\n');
+  function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s;}
+  var pr;
+  try{
+    pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS))throw new Error('link');
+  }catch(e){stage.classList.add('nogl');return;}
+  gl.useProgram(pr);
+  gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+  var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  var uRes=gl.getUniformLocation(pr,'uRes'), uT=gl.getUniformLocation(pr,'uT'), uM=gl.getUniformLocation(pr,'uMouse');
+  var mx=0,my=0,tx=0,ty=0;
+  stage.addEventListener('pointermove',function(e){var r=stage.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=.5-(e.clientY-r.top)/r.height;});
+  stage.addEventListener('pointerleave',function(){tx=0;ty=0;});
+  function fit(){var d=Math.min(window.devicePixelRatio||1,2),w=Math.max(1,Math.round(cv.clientWidth*d)),h=Math.max(1,Math.round(cv.clientHeight*d));if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h);}}
+  var t0=performance.now();
+  function draw(now){fit();mx+=(tx-mx)*.05;my+=(ty-my)*.05;gl.uniform2f(uRes,cv.width,cv.height);gl.uniform1f(uT,(now-t0)*0.002+18.0);gl.uniform2f(uM,mx,my);gl.drawArrays(gl.TRIANGLES,0,6);}
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){draw(t0);window.addEventListener('resize',function(){draw(t0);});return;}
+  var onscreen=true, raf=0;
+  function tick(now){raf=0;draw(now);if(onscreen&&!document.hidden)raf=requestAnimationFrame(tick);}
+  function wake(){if(!raf&&onscreen&&!document.hidden)raf=requestAnimationFrame(tick);}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){onscreen=es[0].isIntersecting;wake();}).observe(stage);}
+  document.addEventListener('visibilitychange',wake);
+  wake();
+})();
+
+/* Hoja de vida: en el visor de Claude se entrega con la capacidad de descargas; fuera de él, el enlace funciona solo */
+(function(){
+  var links=document.querySelectorAll('a[data-cv]');
+  if(!links.length||!window.claude||typeof window.claude.use!=='function') return;
+  window.claude.use('downloads').then(function(dl){
+    if(!dl) return;
+    links.forEach(function(a){
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        fetch(a.getAttribute('href')).then(function(r){if(!r.ok)throw new Error('fetch');return r.blob();})
+          .then(function(b){return dl.save({filename:'Hoja-de-vida-Juan-Pablo-Osorio.pdf',data:b});})
+          .catch(function(err){if(err&&(err.code==='declined'||err.code==='rate_limited'))return;});
+      });
+    });
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>
